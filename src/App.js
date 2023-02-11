@@ -1,18 +1,35 @@
-const Hello = (props) => {
+import { useState } from "react"
+
+const Display = ({ counter }) => {
   return (
-    <div>
-      <p>Hello {props.name}</p>
-    </div>
+    <div>{counter}</div>
+  )
+}
+
+const Button = ({ text, onClick }) => {
+  return (
+    <button onClick={onClick}>
+      {text}
+    </button>
   )
 }
 
 const App = () => {
-  console.log("Hello from App component")
-  const myWords = "Keep the console open all the time"
+  const [ counter, setCounter ] = useState(0)
+
+  const handlePlusClick = () => {
+    setCounter(counter + 1)
+  }
+
+  const handleResetClick = () => {
+    setCounter(0)
+  }
+
   return (
     <div>
-      <Hello name="Austin" />
-      <p>{myWords}</p>
+      <Display counter={counter} />
+      <Button text="plus" onClick={handlePlusClick} />
+      <Button text="reset" onClick={handleResetClick} />
     </div>
   )
 }
