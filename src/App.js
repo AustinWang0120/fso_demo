@@ -1,35 +1,12 @@
-import { useState } from "react"
-
-const Display = ({ counter }) => {
-  return (
-    <div>{counter}</div>
-  )
-}
-
-const Button = ({ text, onClick }) => {
-  return (
-    <button onClick={onClick}>
-      {text}
-    </button>
-  )
-}
-
-const App = () => {
-  const [ counter, setCounter ] = useState(0)
-
-  const handlePlusClick = () => {
-    setCounter(counter + 1)
-  }
-
-  const handleResetClick = () => {
-    setCounter(0)
-  }
-
+const App = ({ notes }) => {
   return (
     <div>
-      <Display counter={counter} />
-      <Button text="plus" onClick={handlePlusClick} />
-      <Button text="reset" onClick={handleResetClick} />
+      <h1>Notes</h1>
+      <ul>
+        <li>{notes[0].content}</li>
+        <li>{notes[1].content}</li>
+        <li>{notes[2].content}</li>
+      </ul>
     </div>
   )
 }
